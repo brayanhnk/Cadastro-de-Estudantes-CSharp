@@ -1,0 +1,14 @@
+
+CREATE DATABASE IF NOT EXISTS escola;
+USE escola;
+
+CREATE TABLE IF NOT EXISTS Estudantes (
+
+    Id INT NOT NULL AUTO_INCREMENT,
+    
+    Nome VARCHAR(255) NOT NULL,
+    
+    Idade INT NOT NULL,
+    
+    PRIMARY KEY (Id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
