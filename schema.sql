@@ -12,3 +12,56 @@ CREATE TABLE IF NOT EXISTS Estudantes (
     
     PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE Produtos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Preco DOUBLE NOT NULL
+);
+- Atividade 2: Cadastro de Cliente
+
+CREATE TABLE Clientes (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Estoque (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Quantidade INT NOT NULL
+);
+
+
+CREATE TABLE Professores (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Cursos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    CargaHoraria INT NOT NULL,
+    ProfessorId INT,
+    CONSTRAINT FK_Curso_Professor FOREIGN KEY (ProfessorId) 
+        REFERENCES Professores(Id) ON DELETE SET NULL
+);
+
+
+CREATE TABLE Pedidos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Data DATETIME NOT NULL
+);
+
+
+CREATE TABLE ItensPedidos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Produto VARCHAR(255) NOT NULL,
+    Quantidade INT NOT NULL,
+    PedidoId INT NOT NULL,
+    CONSTRAINT FK_Item_Pedido FOREIGN KEY (PedidoId) 
+        REFERENCES Pedidos(Id) ON DELETE CASCADE
+);
